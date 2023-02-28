@@ -38,7 +38,7 @@ with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
-   st.line_chart(data=traffic_df, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
+   st.line_chart(data=pd.DataFrame(traffic_df), x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
 
 st.write("This is outside the container")
 
