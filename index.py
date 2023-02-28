@@ -21,29 +21,26 @@ with st.sidebar:
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
     # conn for learners to use later    
-    conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    #conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    
+    # Conn used during dev
+    conn = {**st.secrets["snowflake"]}     
     if st.button('Connect') or s.pressed_first_button:
                    
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True    
    
-    # Conn used during dev
-    conn2 = {**st.secrets["snowflake"]}     
-
 
 # Create a new Snowpark session (or get existing session details)
 def create_session():
     if "snowpark_session" not in st.session_state:
-        session = Session.builder.configs(conn2).create()
+        session = Session.builder.configs(conn).create()
         st.session_state['snowpark_session'] = session
     else:
         session = st.session_state['snowpark_session']
     return session
     
-   
-# Open a Snowflake Snowpark Session
-session = create_session()
-   
+      
 traffic_df = session.sql("select * from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
 traffic_df =  pd.DataFrame(traffic_df)
 st.write(traffic_df)
