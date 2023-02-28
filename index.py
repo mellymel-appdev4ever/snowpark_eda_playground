@@ -39,7 +39,7 @@ with st.container():
 
    st.write(traffic_df)
        
-   #st.line_chart(traffic_df)
+   st.line_chart(snowflake.snowpark.dataframe.traffic_df)
    #st.area_chart(traffic_df)
    #st.bar_chart(traffic_df)
         
@@ -55,7 +55,7 @@ st.stop()
 
 st.stop()
 
-                
+#snowflake.snowpark.table.Table            
   
 
   
