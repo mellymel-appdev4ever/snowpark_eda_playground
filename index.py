@@ -20,14 +20,16 @@ with st.sidebar:
     SF_USR = st.text_input('Snowflake user:')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
-    conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
-            
+    # conn for learners to use later    
+    //conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+   # Conn used during dev
+    conn = {**st.secrets["snowflake"]}     
 
 
 # Create a new Snowpark session (or get existing session details)
 def create_session():
     if "snowpark_session" not in st.session_state:
-        session = Session.builder.configs(conn2).create()
+        session = Session.builder.configs(conn).create()
         st.session_state['snowpark_session'] = session
     else:
         session = st.session_state['snowpark_session']
