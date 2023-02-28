@@ -40,8 +40,8 @@ with st.container():
    st.write(traffic_df)
        
    #st.line_chart(traffic_df)
-   st.area_chart(traffic_df)
-   st.bar_chart(traffic_df)
+   #st.area_chart(traffic_df)
+   #st.bar_chart(traffic_df)
         
    #st.line_chart(traffic_df, traffic_date, traffic_volume, 0, height=0, use_container_width=True)
 
