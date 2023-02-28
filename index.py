@@ -22,14 +22,19 @@ with st.sidebar:
 
     # conn for learners to use later    
     conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    if st.button('Connect') or s.pressed_first_button:
+                   
+            session = Session.builder.configs(conn).create()
+            s.pressed_first_button = True    
+   
     # Conn used during dev
-    conn = {**st.secrets["snowflake"]}     
+    conn2 = {**st.secrets["snowflake"]}     
 
 
 # Create a new Snowpark session (or get existing session details)
 def create_session():
     if "snowpark_session" not in st.session_state:
-        session = Session.builder.configs(conn).create()
+        session = Session.builder.configs(conn2).create()
         st.session_state['snowpark_session'] = session
     else:
         session = st.session_state['snowpark_session']
