@@ -39,11 +39,10 @@ with st.container():
 
    st.write(traffic_df)
         
-   chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
-
-   st.line_chart(chart_data)     
+   st.line_chart(traffic_df)
+   st.area_chart(traffic_df)
+   st.bar_chart(traffic_df)
+        
    #st.line_chart(traffic_df, traffic_date, traffic_volume, 0, height=0, use_container_width=True)
 
 st.write("This is outside the container")
