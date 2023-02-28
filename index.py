@@ -38,7 +38,7 @@ with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
-   pd_df_traffic = traffic.to_pandas()    
+   pd_df_traffic = traffic_df.to_pandas()    
    st.line_chart(pd_df_traffic)
    #st.area_chart(traffic_df)
    #st.bar_chart(traffic_df)
