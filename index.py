@@ -34,6 +34,16 @@ with st.sidebar:
             traffic_df =  pd.DataFrame(traffic_df)
             st.write(traffic_df)
 
+with st.container():
+   st.write("This is inside the container")
+
+   # You can call any Streamlit command, including custom components:
+   t.line_chart(data=traffic_df, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
+
+st.write("This is outside the container")
+
+
+        
 st.stop()
 #st.line_chart(data=traffic_df, *, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
 
