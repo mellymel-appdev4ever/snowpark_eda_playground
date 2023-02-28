@@ -21,8 +21,8 @@ with st.sidebar:
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
     # conn for learners to use later    
-    //conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
-   # Conn used during dev
+    #conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    # Conn used during dev
     conn = {**st.secrets["snowflake"]}     
 
 
