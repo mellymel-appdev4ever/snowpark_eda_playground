@@ -48,6 +48,7 @@ traffic_df = session.sql("select * from usonian_bridges.raw.tacoma_narrows_traff
 traffic_df =  pd.DataFrame(traffic_df)
 st.write(traffic_df)
 
+st.stop()
 st.line_chart(data=traffic_df, *, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
 
 
