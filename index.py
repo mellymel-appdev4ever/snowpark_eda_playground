@@ -38,8 +38,8 @@ with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
-        
-   st.line_chart(traffic_df)
+       
+   #st.line_chart(traffic_df)
    st.area_chart(traffic_df)
    st.bar_chart(traffic_df)
         
