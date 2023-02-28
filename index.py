@@ -41,12 +41,12 @@ def create_session():
     return session
     
       
-traffic_df = session.sql("select * from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
+traffic_df = session.sql("select traffic_date, traffic_volume from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
 traffic_df =  pd.DataFrame(traffic_df)
 st.write(traffic_df)
 
 st.stop()
-st.line_chart(data=traffic_df, *, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
+#st.line_chart(data=traffic_df, *, x=traffic_date, y=traffic_volume, width=0, height=0, use_container_width=True)
 
 
 st.stop()
