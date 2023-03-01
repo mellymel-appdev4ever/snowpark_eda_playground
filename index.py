@@ -32,25 +32,19 @@ with st.sidebar:
             s.pressed_first_button = True    
       
             traffic_df = session.sql("select traffic_direction, traffic_date, sum(traffic_volume) as daily_volume from usonian_bridges.raw.tacoma_narrows_traffic group by traffic_date, traffic_direction order by  traffic_date ;").collect()
-            pd_traffic_df =  pd.DataFrame(traffic_df)
-            #st.write(traffic_df)
-
+            # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
+            pd_traffic_df =  pd.DataFrame(traffic_df) 
+           
 with st.container():
    st.write("This is inside the container")
-
-   st.write(traffic_df)
-   
-   st.write(pd_traffic_df)
+  
+   st.write(pd_traffic_df) 
    
    st.line_chart(pd_traffic_df, x='TRAFFIC_DATE', y='DAILY_VOLUME')
 
-   #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
-
-   #st.altair_chart(c, use_container_width=True)
-   #st.line_chart(traffic_df)
-        
-   #st.area_chart(traffic_df)
-   #st.bar_chart(traffic_df)
+     
+   st.area_chart(pd_traffic_df, x='TRAFFIC_DATE', y='DAILY_VOLUME')
+   st.bar_chart(pd_traffic_df, x='TRAFFIC_DATE', y='DAILY_VOLUME')
         
    
 
