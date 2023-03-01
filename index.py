@@ -8,6 +8,7 @@ import streamlit as st
 import pandas as pd
 import json
 import numpy as np
+import altair as alt
 
 st.set_page_config(page_title='Explore Your Data Set',  initial_sidebar_state="auto", menu_items=None)
 s = st.session_state
@@ -30,7 +31,7 @@ with st.sidebar:
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True    
       
-            traffic_df = session.sql("select traffic_date, traffic_volume from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
+            traffic_df = session.sql("select traffic_direction, traffic_date, traffic_volume from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
             traffic_df =  pd.DataFrame(traffic_df)
             #st.write(traffic_df)
 
@@ -38,8 +39,12 @@ with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
-   pd_df_traffic = F.traffic_df.to_pandas()    
-   st.line_chart(pd_df_traffic)
+   c = alt.Chart(traffic_df).mark_circle().encode(
+    x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
+
+   st.altair_chart(c, use_container_width=True)
+   #st.line_chart(traffic_df)
+        
    #st.area_chart(traffic_df)
    #st.bar_chart(traffic_df)
         
