@@ -6,9 +6,6 @@ from snowflake.snowpark import Window
 from io import StringIO
 import streamlit as st
 import pandas as pd
-import json
-import numpy as np
-import altair as alt
 
 st.set_page_config(page_title='Explore Your Data Set',  initial_sidebar_state="auto", menu_items=None)
 s = st.session_state
@@ -41,12 +38,19 @@ with st.container():
    st.write(pd_traffic_df) 
    
    st.line_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
-
      
    st.area_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
    st.bar_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
         
-   
+   st.vega_lite_chart(pd_traffic_df, {
+    'mark': {'type': 'circle', 'tooltip': True},
+    'encoding': {
+        'x': {'field': 'TRAFFIC_MO', 'type': 'quantitative'},
+        'y': {'field': 'TRAFFIC_VOL', 'type': 'quantitative'},
+        'size': {'field': 'TRAFFIC_DIR', 'type': 'quantitative'},
+        'color': {'field': 'TRAFFIC_DIR', 'type': 'quantitative'},
+    },
+})
 
 st.write("This is outside the container")
 
@@ -57,7 +61,6 @@ st.stop()
 
 
 st.stop()
-
-#snowflake.snowpark.table.Table            
+         
   
 
