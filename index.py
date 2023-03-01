@@ -32,13 +32,15 @@ with st.sidebar:
             s.pressed_first_button = True    
       
             traffic_df = session.sql("select traffic_direction, traffic_date, traffic_volume from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
-            traffic_df =  pd.DataFrame(traffic_df)
+            pd_traffic_df =  pd.DataFrame(traffic_df)
             #st.write(traffic_df)
 
 with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
+   
+   st.write(pd_traffic_df)
         
    #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
 
