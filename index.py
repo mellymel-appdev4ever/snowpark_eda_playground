@@ -31,7 +31,7 @@ with st.sidebar:
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True    
       
-            traffic_df = session.sql("select traffic_direction, traffic_date, traffic_volume from usonian_bridges.raw.tacoma_narrows_traffic order by traffic_direction, traffic_date, traffic_hour;").collect()
+            traffic_df = session.sql("select traffic_direction, traffic_date, sum(traffic_volume) as daily_volume from usonian_bridges.raw.tacoma_narrows_traffic group by traffic_date, traffic_direction order by  traffic_date ;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
             #st.write(traffic_df)
 
@@ -42,7 +42,7 @@ with st.container():
    
    st.write(pd_traffic_df)
    
-   st.line_chart(pd_traffic_df, x='TRAFFIC_DATE', y='TRAFFIC_VOLUME')
+   st.line_chart(pd_traffic_df, x='TRAFFIC_DATE', y='DAILY_VOLUME')
 
    #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
 
