@@ -39,10 +39,10 @@ with st.container():
    st.write("This is inside the container")
 
    st.write(traffic_df)
-   c = alt.Chart(traffic_df).mark_circle().encode(
-    x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
+        
+   #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
 
-   st.altair_chart(c, use_container_width=True)
+   #st.altair_chart(c, use_container_width=True)
    #st.line_chart(traffic_df)
         
    #st.area_chart(traffic_df)
