@@ -42,7 +42,7 @@ with st.container():
    
    st.write(pd_traffic_df)
    
-   st.line_chart(pd_traffic_df)
+   st.line_chart(pd_traffic_df, x='TRAFFIC_DATE', y='TRAFFIC_VOLUME')
 
    #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
 
