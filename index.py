@@ -40,7 +40,7 @@ with st.container():
    st.line_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
      
    st.area_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
-   st.bar_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
+   st.bar_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_DIR','TRAFFIC_VOL')
         
    st.vega_lite_chart(pd_traffic_df, {
     'mark': {'type': 'circle', 'tooltip': True},
