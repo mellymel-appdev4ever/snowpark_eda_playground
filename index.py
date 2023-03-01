@@ -41,7 +41,9 @@ with st.container():
    st.write(traffic_df)
    
    st.write(pd_traffic_df)
-        
+   
+   st.line_chart(traffic_df)
+
    #c = alt.Chart(traffic_df).mark_circle().encode(x='traffic_date', y='traffic_', size='c', color='c', tooltip=['a', 'b', 'c'])
 
    #st.altair_chart(c, use_container_width=True)
@@ -50,7 +52,7 @@ with st.container():
    #st.area_chart(traffic_df)
    #st.bar_chart(traffic_df)
         
-   #st.line_chart(traffic_df, traffic_date, traffic_volume, 0, height=0, use_container_width=True)
+   
 
 st.write("This is outside the container")
 
