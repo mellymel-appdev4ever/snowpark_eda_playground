@@ -37,18 +37,18 @@ with st.container():
   
    st.write(pd_traffic_df) 
    
-   st.line_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
+   st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='EASTBOUND_TRAFFIC_VOL')
      
-   st.area_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_VOL')
-   st.bar_chart(pd_traffic_df, x='TRAFFIC_MO', y='TRAFFIC_DIR,TRAFFIC_VOL')
+   st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='EASTBOUND_TRAFFIC_VOL')
+   st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='EASTBOUND_TRAFFIC_VOL')
         
    st.vega_lite_chart(pd_traffic_df, {
     'mark': {'type': 'circle', 'tooltip': True},
     'encoding': {
-        'x': {'field': 'TRAFFIC_MO', 'type': 'quantitative'},
-        'y': {'field': 'TRAFFIC_VOL', 'type': 'quantitative'},
-        'size': {'field': 'TRAFFIC_DIR', 'type': 'nominal'},
-        'color': {'field': 'TRAFFIC_DIR', 'type': 'nominal'},
+        'x': {'field': 'TRAFFIC_MONTH', 'type': 'quantitative'},
+        'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative'},
+        'size': {'field': 'EASTBOUND_TRAFFIC_VOLUME', 'type': 'nominal'},
+        'color': {'field': 'EASTBOUND_TRAFFIC_VOLUME', 'type': 'nominal'},
     },
 })
 
