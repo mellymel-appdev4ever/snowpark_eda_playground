@@ -47,8 +47,8 @@ with st.container():
     'encoding': {
         'x': {'field': 'TRAFFIC_MO', 'type': 'quantitative'},
         'y': {'field': 'TRAFFIC_VOL', 'type': 'quantitative'},
-        'size': {'field': 'TRAFFIC_DIR', 'type': 'quantitative'},
-        'color': {'field': 'TRAFFIC_DIR', 'type': 'quantitative'},
+        'size': {'field': 'TRAFFIC_DIR', 'type': 'nominal'},
+        'color': {'field': 'TRAFFIC_DIR', 'type': 'nominal'},
     },
 })
 
