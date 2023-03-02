@@ -36,7 +36,7 @@ with st.sidebar:
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df) 
 
 
-st.vega_lite_chart(pd_traffic_df, {
+st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'bar',
 'encoding': {
 'x': {'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
