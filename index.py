@@ -32,7 +32,7 @@ with st.sidebar:
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
 
-            traffic_2_df = session.sql("select DATE_FROM_PARTS(traffic_year, traffic_month, traffic_dom) as date, traffic_volume, traffic_direction from usonian_bridges.raw.tacoma_narrows_traffic;").collect()
+            traffic_2_df = session.sql("select DATE_FROM_PARTS(traffic_year, traffic_month, traffic_dom) as date, traffic_hour, traffic_volume, traffic_direction from usonian_bridges.raw.tacoma_narrows_traffic;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
 st.vega_lite_chart(pd_traffic_df, {
@@ -53,20 +53,12 @@ st.vega_lite_chart(pd_traffic_df, {
         }
 })
 
+
 st.write(pd_traffic_df) 
    
 st.title('Hourly Traffic Volume Scatterplot') 
 st.write('Looking for Outlier Volumes')
 
-st.vega_lite_chart(pd_traffic_2_df, {
-'mark': 'point',
-'encoding': {
-'x': {'field': 'DATE', 'type': 'ordinal', 'scale': {'zero': 'false'}},
-'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-        }
-})
   
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
@@ -78,7 +70,15 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 })  
 
-
+st.vega_lite_chart(pd_traffic_2_df, {
+'mark': 'point',
+'encoding': {
+'x': {'field': 'TRAFFIC_HOUR', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+        }
+})
 
         
 st.stop()
