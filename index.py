@@ -30,11 +30,9 @@ with st.sidebar:
             s.pressed_first_button = True    
       
             traffic_df = session.sql("select * from usonian_bridges.raw.traffic_by_month order by traffic_month, traffic_direction;").collect()
-            # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_df =  pd.DataFrame(traffic_df)
    
             traffic_2_df = session.sql("select DATE_FROM_PARTS(traffic_year, traffic_month, traffic_dom) as date, traffic_volume, traffic_direction from usonian_bridges.raw.tacoma_narrows_traffic;").collect()
-            # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df) 
 
 
@@ -71,7 +69,7 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 })
   
-        
+  
 
 
 
