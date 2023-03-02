@@ -67,7 +67,7 @@ st.vega_lite_chart(pd_traffic_2_df, {
 'encoding': {
 'x': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
 'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-'color': {'orange'}
+'color': 'orange'
         }
 }) 
         
