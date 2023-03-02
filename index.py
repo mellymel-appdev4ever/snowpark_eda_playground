@@ -57,13 +57,11 @@ with st.container():
     'encoding': {
         'x': {
               'field': 'TRAFFIC_MONTH',
-              'type': 'temporal',
-              'scale': {'zero': false}
+              'type': 'temporal'
            },
         'y': {
               'field': 'TRAFFIC_VOL',
-              'type': 'quantitative',
-              'scale': {'zero': false}
+              'type': 'quantitative'
             },
         'color': {'field': 'DIR', 'type': 'nominal'},
         'shape': {'field': 'DIR', 'type': 'nominal'}
