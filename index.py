@@ -79,7 +79,8 @@ st.vega_lite_chart(pd_traffic_2_df, {
 'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
 'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
         }
-})  
+}, theme="streamlit", use_container_width=True
+    )  
 
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
