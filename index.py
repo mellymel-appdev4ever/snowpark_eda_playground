@@ -35,7 +35,7 @@ with st.sidebar:
             traffic_2_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_hour;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
-st.title("Traffic Volume by Day of Week")
+st.title("Traffic Volume by Month in 2022")
                 
 st.vega_lite_chart(pd_traffic_df, {
 'mark': 'bar',
@@ -56,10 +56,10 @@ st.vega_lite_chart(pd_traffic_df, {
 })
 
 
-st.write(pd_traffic_df) 
+#st.write(pd_traffic_df) 
    
-st.title('Traffic Volume by Hour (without regard to Month') 
-st.write('Looking for Outlier Volumes')
+st.title('Traffic Volume by Day of Week') 
+st.write('Where Sunday is 1...and Saturday is 7')
 
 
 st.vega_lite_chart(pd_traffic_2_df, {
@@ -80,6 +80,9 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 }, theme="streamlit", use_container_width=True
     )  
+
+st.title('Traffic Volume by Hour of Day') 
+st.write('Where 1 is 1:00 AM ...and 24 is midnight')
 
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
