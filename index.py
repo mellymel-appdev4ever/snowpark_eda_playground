@@ -63,11 +63,74 @@ with st.container():
               'field': 'TRAFFIC_VOLUME',
               'type': 'quantitative'
             },
-        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-        'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-          }
+        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+            }
         })
 
+        
+    st.vega_lite_chart(pd_traffic_df, {   
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["TRAFFIC_MONTH"],
+          "sort": {"field": "TRAFFIC_MONTH"},
+          "field": "TRAFFIC_VOLUME"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "TRAFFIC_MONTH",
+      "type": "band",
+      "range": "width",
+      "domain": {"data": "table", "field": "TRAFFIC_MONTH"}
+    },
+    {
+      "name": "TRAFFIC_VOLUME",
+      "type": "linear",
+      "range": "height",
+      "nice": true, "zero": true,
+      "domain": {"data": "table", "field": "TRAFFIC_VOLUME"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": "category",
+      "domain": {"data": "table", "field": "TRAFFIC_DIRECTION"}
+    }
+  ],
+
+  "axes": [
+    {"orient": "bottom", "scale": "TRAFFIC_MONTH", "zindex": 1},
+    {"orient": "left", "scale": "TRAFFIC_VOLUME", "zindex": 1}
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "TRAFFIC_MONTH", "field": "TRAFFIC_MONTH"},
+          "width": {"scale": "TRAFFIC_MONTH", "band": 1, "offset": -1},
+          "y": {"scale": "TRAFFIC_VOLUME", "field": "TRAFFIC_VOLUME0"},
+          "y2": {"scale": "TRAFFIC_VOLUME", "field": "TRAFFIC_VOLUME1"},
+          "fill": {"scale": "color", "field": "TRAFFIC_DIRECTION"}
+        },
+        "update": {
+          "fillOpacity": {"value": 1}
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.5}
+        }
+      }
+    }
+  ]
+}
+        
+        
 st.write("This is outside the container")
 
 
