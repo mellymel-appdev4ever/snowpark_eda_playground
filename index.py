@@ -39,8 +39,8 @@ with st.container():
    
    st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
      
-   st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-   st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+   #st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+   #st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
         
    st.vega_lite_chart(pd_traffic_df, {
     'mark': {'type': 'circle', 'tooltip': True},
@@ -51,6 +51,27 @@ with st.container():
         'color': {'field': 'TRAFFIC_VOLUME', 'type': 'nominal'},
     },
 })
+
+{
+
+st.vega_lite_chart(pd_traffic_df, {
+  "description": "A scatterplot",
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "TRAFFIC_MONTH",
+      "type": "temporal",
+      "scale": {"zero": false}
+    },
+    "y": {
+      "field": "TRAFFIC_VOL",
+      "type": "quantitative",
+      "scale": {"zero": false}
+    },
+    "color": {"field": "DIR", "type": "nominal"},
+    "shape": {"field": "DIR", "type": "nominal"}
+  }
+}
 
 st.write("This is outside the container")
 
