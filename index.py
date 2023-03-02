@@ -80,6 +80,16 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 })
 
+st.vega_lite_chart(pd_traffic_2_df, {
+'mark': 'boxplot',
+'encoding': {
+'x': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+        }
+})
+
         
 st.stop()
 
