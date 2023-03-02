@@ -12,6 +12,7 @@ s = st.session_state
 if not s:
         s.pressed_first_button = False
 
+        
 with st.sidebar:
     
     SF_ACCOUNT = st.text_input('Snowflake account:')
@@ -31,7 +32,8 @@ with st.sidebar:
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_df =  pd.DataFrame(traffic_df) 
-  
+
+st.title('Monthly Volume by Direction')        
 st.vega_lite_chart(pd_traffic_df, {
 'mark': 'line',
 'encoding': {
@@ -50,23 +52,15 @@ st.vega_lite_chart(pd_traffic_df, {
         }
 })
 
-
-with st.container():
-   st.write("This is inside the container")
-  
-   st.write(pd_traffic_df) 
+st.write(pd_traffic_df) 
    
-       
-   st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-     
-   #st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-   #st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+
         
 
 
         
         
-st.write("This is outside the container")
+
 
 
         
