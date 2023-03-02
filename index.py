@@ -31,37 +31,7 @@ with st.sidebar:
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_df =  pd.DataFrame(traffic_df) 
-           
-with st.container():
-   st.write("This is inside the container")
   
-   st.write(pd_traffic_df) 
-   
-   st.vega_lite_chart(pd_traffic_df, {
-    'mark': {'type': 'bar', 'cornerRadiusTopLeft': 3, 'cornerRadiusTopRight': 3},
-    'encoding': {
-        'x': {'timeUnit': 'month', 'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
-        'y': {'aggregate': 'TRAFFIC_VOLUME'},
-        'color': {'field': 'TRAFFIC_DIRECTION'}
-                }
-    })     
-        
-        
-   st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-     
-   #st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-   #st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
-        
-   st.vega_lite_chart(pd_traffic_df, {
-    'mark': {'type': 'circle', 'tooltip': True},
-    'encoding': {
-        'x': {'field': 'TRAFFIC_MONTH', 'type': 'quantitative'},
-        'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative'},
-        'size': {'field': 'TRAFFIC_VOLUME', 'type': 'nominal'},
-        'color': {'field': 'TRAFFIC_VOLUME', 'type': 'nominal'},
-    },
-   })
-
    st.vega_lite_chart(pd_traffic_df, {
     'mark': 'line',
     'encoding': {
@@ -91,6 +61,20 @@ with st.container():
         'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
             }
         })
+
+
+with st.container():
+   st.write("This is inside the container")
+  
+   st.write(pd_traffic_df) 
+   
+       
+   st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+     
+   #st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+   #st.bar_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
+        
+
 
         
         
