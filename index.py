@@ -35,6 +35,8 @@ with st.sidebar:
             traffic_2_df = session.sql("select DATE_FROM_PARTS(traffic_year, traffic_month, traffic_dom) as date, traffic_dow, traffic_hour, traffic_volume, traffic_direction from usonian_bridges.raw.tacoma_narrows_traffic;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
+st.title("Traffic Volume by Month")
+                
 st.vega_lite_chart(pd_traffic_df, {
 'mark': 'bar',
 'encoding': {
@@ -56,17 +58,17 @@ st.vega_lite_chart(pd_traffic_df, {
 
 st.write(pd_traffic_df) 
    
-st.title('Hourly Traffic Volume (without regard to Month') 
+st.title('Traffic Volume by Hour (without regard to Month') 
 st.write('Looking for Outlier Volumes')
 
 
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'boxplot',
 'encoding': {
-'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
-'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+'x': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal', 'scale': {'zero': 'false'}},
+'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'color': {'field': 'TRAFFIC_DOW', 'type': 'nominal'},
+'shape': {'field': 'TRAFFIC_DOW', 'type': 'nominal'}
         }
 }) 
         
