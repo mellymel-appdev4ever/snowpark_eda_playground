@@ -37,6 +37,16 @@ with st.container():
   
    st.write(pd_traffic_df) 
    
+   st.vega_lite_chart(pd_traffic_df, {
+    'mark': {'type': 'bar', 'cornerRadiusTopLeft': 3, 'cornerRadiusTopRight': 3},
+    'encoding': {
+        'x': {'timeUnit': 'month', 'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
+        'y': {'aggregate': 'TRAFFIC_VOLUME'},
+        'color': {'field': 'TRAFFIC_DIRECTION'}
+                }
+    })     
+        
+        
    st.line_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
      
    #st.area_chart(pd_traffic_df, x='TRAFFIC_MONTH', y='TRAFFIC_VOLUME')
