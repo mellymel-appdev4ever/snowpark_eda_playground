@@ -60,11 +60,11 @@ with st.container():
               'type': 'temporal'
            },
         'y': {
-              'field': 'TRAFFIC_VOL',
+              'field': 'TRAFFIC_VOLUME',
               'type': 'quantitative'
             },
-        'color': {'field': 'DIR', 'type': 'nominal'},
-        'shape': {'field': 'DIR', 'type': 'nominal'}
+        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+        'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
           }
         })
 
