@@ -32,10 +32,10 @@ with st.sidebar:
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
 
-            traffic_2_df = session.sql("select DATE_FROM_PARTS(traffic_year, traffic_month, traffic_dom) as date, traffic_dow, traffic_hour, traffic_volume, traffic_direction from usonian_bridges.raw.tacoma_narrows_traffic;").collect()
+            traffic_2_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_hour;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
-st.title("Traffic Volume by Month")
+st.title("Traffic Volume by Day of Week")
                 
 st.vega_lite_chart(pd_traffic_df, {
 'mark': 'bar',
