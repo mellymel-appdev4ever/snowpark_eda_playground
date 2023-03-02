@@ -68,7 +68,7 @@ with st.container():
         })
 
         
-    st.vega_lite_chart(pd_traffic_df, {   
+   st.vega_lite_chart(pd_traffic_df, {   
       "transform": [
         {
           "type": "stack",
