@@ -37,18 +37,18 @@ with st.sidebar:
             # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df) 
 
-st.title('Monthly Volume by Direction')        
+
 st.vega_lite_chart(pd_traffic_df, {
-'mark': 'line',
+'mark': 'bar',
 'encoding': {
 'x': {'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
 'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative'},
 'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-    }
+        }
 })
 
 st.vega_lite_chart(pd_traffic_df, {
-'mark': 'bar',
+'mark': 'line',
 'encoding': {
 'x': {'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
 'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative'},
