@@ -64,12 +64,11 @@ st.write('Looking for Outlier Volumes')
 
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'boxplot',
-'color':'orange', 
 'encoding': {
 'x': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
 'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
         }
-}) 
+}, theme="streamlit", use_container_width=True) 
         
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
