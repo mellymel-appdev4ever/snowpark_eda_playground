@@ -32,7 +32,9 @@ with st.sidebar:
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
 
-
+            traffic_2_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
+            pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
+                
 st.vega_lite_chart(pd_traffic_df, {
 'mark': 'bar',
 'encoding': {
