@@ -58,7 +58,7 @@ st.write(pd_traffic_df)
 st.title('Hourly Traffic Volume Scatterplot') 
 st.write('Looking for Outlier Volumes')
 
-st.vega_lite_chart(pd_traffic_df, {
+st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
 'encoding': {
 'x': {'field': 'TRAFFIC_MONTH', 'type': 'ordinal', 'scale': {'zero': false}},
