@@ -76,16 +76,21 @@ with st.container():
         'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
             }
         })
-
+    
    st.vega_lite_chart(pd_traffic_df, {
-    'mark': {'type': 'bar', 'cornerRadiusTopLeft': 3, 'cornerRadiusTopRight': 3},
+    'mark': 'bar',
     'encoding': {
-        'x': {'timeUnit': 'month', 'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
-        'y': {'aggregate': 'TRAFFIC_VOLUME'},
-        'color': {'field': 'TRAFFIC_DIRECTION'}
-                }
-        })     
-
+        'x': {
+              'field': 'TRAFFIC_MONTH',
+              'type': 'temporal'
+           },
+        'y': {
+              'field': 'TRAFFIC_VOLUME',
+              'type': 'quantitative'
+            },
+        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+            }
+        })
 
         
         
