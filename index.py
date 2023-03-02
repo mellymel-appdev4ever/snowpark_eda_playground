@@ -32,35 +32,35 @@ with st.sidebar:
             # Convert Snowflake DF to Pandas DF so Streamlit can use it in charts
             pd_traffic_df =  pd.DataFrame(traffic_df) 
   
-   st.vega_lite_chart(pd_traffic_df, {
-    'mark': 'line',
-    'encoding': {
-        'x': {
-              'field': 'TRAFFIC_MONTH',
-              'type': 'temporal'
-           },
-        'y': {
-              'field': 'TRAFFIC_VOLUME',
-              'type': 'quantitative'
-            },
-        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-            }
-        })
-    
-   st.vega_lite_chart(pd_traffic_df, {
-    'mark': 'bar',
-    'encoding': {
-        'x': {
-              'field': 'TRAFFIC_MONTH',
-              'type': 'temporal'
-           },
-        'y': {
-              'field': 'TRAFFIC_VOLUME',
-              'type': 'quantitative'
-            },
-        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-            }
-        })
+st.vega_lite_chart(pd_traffic_df, {
+'mark': 'line',
+'encoding': {
+'x': {
+      'field': 'TRAFFIC_MONTH',
+      'type': 'temporal'
+   },
+'y': {
+      'field': 'TRAFFIC_VOLUME',
+      'type': 'quantitative'
+    },
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+    }
+})
+
+st.vega_lite_chart(pd_traffic_df, {
+'mark': 'bar',
+'encoding': {
+'x': {
+      'field': 'TRAFFIC_MONTH',
+      'type': 'temporal'
+   },
+'y': {
+      'field': 'TRAFFIC_VOLUME',
+      'type': 'quantitative'
+    },
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+    }
+})
 
 
 with st.container():
