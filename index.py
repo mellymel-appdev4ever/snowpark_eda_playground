@@ -56,10 +56,20 @@ st.vega_lite_chart(pd_traffic_df, {
 
 st.write(pd_traffic_df) 
    
-st.title('Hourly Traffic Volume Scatterplot') 
+st.title('Hourly Traffic Volume (without regard to Month') 
 st.write('Looking for Outlier Volumes')
 
-  
+
+st.vega_lite_chart(pd_traffic_2_df, {
+'mark': 'boxplot',
+'encoding': {
+'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+        }
+}) 
+        
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
 'encoding': {
@@ -80,15 +90,7 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 })
 
-st.vega_lite_chart(pd_traffic_2_df, {
-'mark': 'boxplot',
-'encoding': {
-'x': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
-'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-        }
-})
+
 
         
 st.stop()
