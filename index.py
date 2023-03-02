@@ -65,8 +65,8 @@ st.write('Where Sunday is 1...and Saturday is 7')
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'boxplot',
 'encoding': {
-'x': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
-'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
         }
 }, theme="streamlit", use_container_width=True) 
         
