@@ -68,9 +68,9 @@ with st.container():
         })
 
    st.vega_lite_chart(pd_traffic_df, {
-    'mark': {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+    'mark': {'type': 'bar', 'cornerRadiusTopLeft': 3, 'cornerRadiusTopRight': 3},
     'encoding': {
-        'x': {'timeUnit': 'month', 'field': 'TRAFFIC_MONTH', "type": "ordinal"},
+        'x': {'timeUnit': 'month', 'field': 'TRAFFIC_MONTH', 'type': 'ordinal'},
         'y': {'aggregate': 'TRAFFIC_VOLUME'},
         'color': {'field': 'TRAFFIC_DIRECTION'}
                 }
