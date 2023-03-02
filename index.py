@@ -29,7 +29,7 @@ with st.sidebar:
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True    
       
-            traffic_df = session.sql("select * from usonian_bridges.raw.traffic_by_month order by traffic_month, traffic_direction;").collect()
+            traffic_df = session.sql("select * from usonian_bridges.raw.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
 
 
