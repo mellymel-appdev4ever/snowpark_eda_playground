@@ -68,7 +68,15 @@ st.vega_lite_chart(pd_traffic_2_df, {
         }
 })
   
-  
+st.vega_lite_chart(pd_traffic_2_df, {
+'mark': 'point',
+'encoding': {
+'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+'y': {'field': 'DATE', 'type': 'ordinal', 'scale': {'zero': 'false'}},        
+'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+        }
+})  
 
 
 
