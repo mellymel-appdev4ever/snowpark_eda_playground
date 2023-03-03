@@ -82,7 +82,7 @@ st.vega_lite_chart(pd_traffic_2_df, {
     )  
 
 st.title('Traffic Volume by Hour of Day') 
-st.write('Where 1 is 1:00 AM ...and 24 is midnight')
+st.write('Where 0 is midnight to 12:59...and 23 is 11:00 to 11:59 ')
 
 st.vega_lite_chart(pd_traffic_2_df, {
 'mark': 'point',
