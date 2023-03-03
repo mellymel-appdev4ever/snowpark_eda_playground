@@ -36,7 +36,7 @@ with st.sidebar:
             traffic_2_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_hour;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
-with st.container:
+with st.container():
     if st.button('Connect') or s.pressed_first_button:
             st.title("Traffic Volume by Month in 2022")
 
