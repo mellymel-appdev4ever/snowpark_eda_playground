@@ -57,44 +57,41 @@ with st.sidebar:
                     }
             })
 
+            st.title('Traffic Volume by Day of Week') 
+            st.write('Where Sunday is 1...and Saturday is 7')
 
-        st.title('Traffic Volume by Day of Week') 
-        st.write('Where Sunday is 1...and Saturday is 7')
 
+            st.vega_lite_chart(pd_traffic_2_df, {
+            'mark': 'boxplot',
+            'encoding': {
+            'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+            'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+                    }
+            }, theme="streamlit", use_container_width=True) 
 
-        st.vega_lite_chart(pd_traffic_2_df, {
-        'mark': 'boxplot',
-        'encoding': {
-        'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-        'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+            st.vega_lite_chart(pd_traffic_2_df, {
+            'mark': 'point',
+            'encoding': {
+            'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+            'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},        
+            'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+            'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
                 }
-        }, theme="streamlit", use_container_width=True) 
-
-        st.vega_lite_chart(pd_traffic_2_df, {
-        'mark': 'point',
-        'encoding': {
-        'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-        'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},        
-        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-        'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
-                }
-        }, theme="streamlit", use_container_width=True
+            }, theme="streamlit", use_container_width=True
             )  
 
-        st.title('Traffic Volume by Hour of Day') 
-        st.write('Where 0 is midnight to 12:59...and 23 is 11:00 to 11:59 ')
+            st.title('Traffic Volume by Hour of Day') 
+            st.write('Where 0 is midnight to 12:59...and 23 is 11:00 to 11:59 ')
 
-        st.vega_lite_chart(pd_traffic_2_df, {
-        'mark': 'point',
-        'encoding': {
-        'x': {'field': 'TRAFFIC_HOUR', 'type': 'ordinal', 'scale': {'zero': 'false'}},
-        'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-        'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-        'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+            st.vega_lite_chart(pd_traffic_2_df, {
+            'mark': 'point',
+            'encoding': {
+            'x': {'field': 'TRAFFIC_HOUR', 'type': 'ordinal', 'scale': {'zero': 'false'}},
+            'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
+            'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
+            'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
                 }
-        })
-
-
+            })
 
 
         st.stop()
