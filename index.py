@@ -7,7 +7,7 @@ from io import StringIO
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title='Explore Your Data Set',  initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title='Explore Your Tacoma Narrows Traffic Data Set',  initial_sidebar_state="auto", menu_items=None)
 s = st.session_state
 if not s:
         s.pressed_first_button = False
