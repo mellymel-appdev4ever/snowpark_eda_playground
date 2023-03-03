@@ -37,7 +37,7 @@ with st.sidebar:
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
                 
 with st.container():
-    if st.button('Display Exploratory Data Analysis') or s.pressed_first_button:
+    if s.pressed_first_button:
             st.title("Traffic Volume by Month in 2022")
 
             st.vega_lite_chart(pd_traffic_df, {
