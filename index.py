@@ -24,10 +24,12 @@ with st.sidebar:
     # Conn used during dev
     #conn = {**st.secrets["snowflake"]}     
     if st.button('Connect') or s.pressed_first_button:
-            st.stop()       
+                 
             session = Session.builder.configs(conn).create()
+            st.write('Connection succeeded')
             s.pressed_first_button = True    
-      
+            st.stop()  
+
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
 
