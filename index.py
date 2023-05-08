@@ -14,7 +14,7 @@ if not s:
 
         
 with st.sidebar:
-    SF_ACCOUNT = st.text_input('Snowflake account locator:')
+    SF_ACCOUNT = st.text_input('Snowflake account:')
     SF_USR = st.text_input('Snowflake user:')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
