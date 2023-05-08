@@ -76,10 +76,8 @@ with st.container():
             'mark': 'point',
             'encoding': {
             'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-            'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}},        
-            'color': {'field': 'TRAFFIC_HOUR', 'type': 'nominal'},
-            'shape': {'field': 'TRAFFIC_HOUR', 'type': 'nominal'}
-                }
+            'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}}        
+             }
             }, theme="streamlit", use_container_width=True
             )  
 
