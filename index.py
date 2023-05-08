@@ -14,9 +14,7 @@ if not s:
 
         
 with st.sidebar:
-    st.write('No need to fill in these fields. Right now this is hard-coded with Krys\' Bridge Labs Test/Dev account')
-    st.write('Even if you see an error message, just click the Connect button.')
-    SF_ACCOUNT = st.text_input('Snowflake account:')
+    SF_ACCOUNT = st.text_input('Snowflake account locator:')
     SF_USR = st.text_input('Snowflake user:')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
