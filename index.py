@@ -72,14 +72,6 @@ with st.container():
                     }
             }, theme="streamlit", use_container_width=True) 
 
-            st.vega_lite_chart(pd_traffic_2_df, {
-            'mark': 'point',
-            'encoding': {
-            'x': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-            'y': {'field': 'TRAFFIC_DOW', 'type': 'ordinal', 'scale': {'zero': 'false'}}        
-             }
-            }, theme="streamlit", use_container_width=True
-            )  
 
             st.title('Traffic Volume by Hour of Day') 
             st.write('Where 0 is midnight to 12:59...and 23 is 11:00 to 11:59 ')
