@@ -21,10 +21,10 @@ with st.sidebar:
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
     # conn for learners to use later    
-    #conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
     
     # Conn used during dev
-    conn = {**st.secrets["snowflake"]}     
+    #conn = {**st.secrets["snowflake"]}     
     if st.button('Connect') or s.pressed_first_button:
                    
             session = Session.builder.configs(conn).create()
