@@ -28,13 +28,15 @@ with st.sidebar:
             session = Session.builder.configs(conn).create()
             st.write('Connection succeeded')
             s.pressed_first_button = True    
-            st.stop()  
+            #st.stop()  
 
             traffic_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_month order by traffic_month, traffic_direction;").collect()
             pd_traffic_df =  pd.DataFrame(traffic_df)
-
+            st.write('Query of Traffic By Month View Succeeded.')
+            
             traffic_2_df = session.sql("select * from usonian_bridges.conformed.v_traffic_by_hour;").collect()
             pd_traffic_2_df =  pd.DataFrame(traffic_2_df)
+            st.write('Query of Traffic By Hour View Succeeded.')    
                 
 with st.container():
     if s.pressed_first_button:
