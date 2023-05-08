@@ -24,7 +24,7 @@ with st.sidebar:
     # Conn used during dev
     #conn = {**st.secrets["snowflake"]}     
     if st.button('Connect') or s.pressed_first_button:
-                   
+            st.stop()       
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True    
       
