@@ -91,8 +91,8 @@ with st.container():
             'encoding': {
             'x': {'field': 'TRAFFIC_HOUR', 'type': 'ordinal', 'scale': {'zero': 'false'}},
             'y': {'field': 'TRAFFIC_VOLUME', 'type': 'quantitative', 'scale': {'zero': 'false'}},
-            'color': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'},
-            'shape': {'field': 'TRAFFIC_DIRECTION', 'type': 'nominal'}
+            'color': {'field': 'TRAFFIC_DOW', 'type': 'nominal'},
+            'shape': {'field': 'TRAFFIC_DOW', 'type': 'nominal'}
                 }
             })
 
